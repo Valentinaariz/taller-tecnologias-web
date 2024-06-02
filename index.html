@@ -309,40 +309,68 @@
         <div id="registrar">
             <h1 class="titulos">Registro</h1>
         </div>
-        <form class="w-25 ">
+        <form class="w-25 " onsubmit="return alertaRegistro()">
             <div class="mb-1">
-                <label for="exampleInputEmail1" class="form-label"></label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                <label for="nombreRegistro" class="form-label"></label>
+                <input type="text" class="form-control" id="nombreRegistro" aria-describedby="nombreHelp"
                     placeholder="Nombre">
             </div>
             <div class="mb-1">
-                <label for="exampleInputEmail1" class="form-label"></label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                <label for="fechaRegistro" class="form-label"></label>
+                <input type="date" class="form-control" id="fechaRegistro" aria-describedby="fechaHelp"
                     placeholder="Fecha">
             </div>
             <div class="mb-1">
-                <label for="exampleInputEmail1" class="form-label"></label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                <label for="procedimientoRegistro" class="form-label"></label>
+                <input type="text" class="form-control" id="procedimientoRegistro" aria-describedby="procedimientoHelp"
                     placeholder="Procedimiento">
             </div>
             <div class="mb-1">
-                <label for="exampleInputEmail1" class="form-label"></label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                <label for="proxControlRegistro" class="form-label"></label>
+                <input type="date" class="form-control" id="proxControlRegistro" aria-describedby="proxControlRegistroHelp"
                     placeholder="Próximo Control">
             </div>
             <div class="mb-1">
-                <label for="exampleInputEmail1" class="form-label"></label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                <label for="observacionesRegistro" class="form-label"></label>
+                <input type="text" class="form-control" id="observacionesRegistro" aria-describedby="observacionesRegistroHelp"
                     placeholder="Observaciones">
             </div>
             <div class="mb-1">
-                <label for="exampleInputEmail1" class="form-label"></label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                <label for="precioRegistro" class="form-label"></label>
+                <input type="number" class="form-control" id="precioRegistro" aria-describedby="precioRegistroHelp"
                     placeholder="Precio">
             </div>
             <button type="submit" class="btn btn-primary mt-3">Enviar</button>
         </form>
         <div class="container">
+
+            <div class="container mt-5">
+                <h1>Adopta a tu peludo</h1>
+                <table id="adopcion" class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Imagen</th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Edad</th>
+                      <th scope="col">Sexo</th>
+                      <th scope="col">Comuna</th>
+                      <th scope="col">Estado</th>
+                    </tr>
+                  </thead>
+                  <tbody id="bodyTablaAdopcion"></tbody>
+                  <tfoot>
+                    <tr>
+                      <th scope="col">Imagen</th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Edad</th>
+                      <th scope="col">Sexo</th>
+                      <th scope="col">Comuna</th>
+                      <th scope="col">Estado</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+
             <footer class="py-3 my-4">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                     <li class="nav-item px-2 text-muted">Valentina Ariz</li>
@@ -357,6 +385,19 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
-</body>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+            <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
 
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js" ></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.2/js/dataTables.buttons.js" ></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.dataTables.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js" ></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.html5.min.js" ></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.print.min.js" ></script>
+            
+</body>
+            <script src="js/indexScript.js"></script>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </html>
