@@ -14,7 +14,8 @@ function alertaRegistro() {
   let errores = "";
   if (nombreRegistro.length <= 1) {
     errores =
-      errores + "NOMBRE ES CAMPO REQUERIDO O DEBE SER MAYOR A 1 CARACTER\n";
+      errores +
+      "NOMBRE ES CAMPO REQUERIDO O DEBE SER MAYOR A 1 CARACTER\nNombre debe ser Toshi o Cursi";
   }
   if (fechaRegistro.length == 0) {
     errores = errores + "FECHA ES CAMPO REQUERIDO\n";
@@ -34,38 +35,23 @@ function alertaRegistro() {
   if (errores != 0) {
     swal("Registro Fallido", errores, "error");
   } else {
+    let tabla;
+    if (nombreRegistro == "Toshi") {
+      tabla = document.getElementById("tablaToshi");
+    } else {
+      tabla = document.getElementById("tablaCursi");
+    }
     swal("Registro Exitoso", "Entrada Agregada", "success");
+    agregarRegistro(
+      fechaRegistro,
+      procedimientoRegistro,
+      proxControlRegistro,
+      observacionesRegistro,
+      precioRegistro,
+      tabla
+    );
   }
 
-  console.log(
-    "Nombre " +
-      nombreRegistro +
-      " Fecha " +
-      fechaRegistro +
-      " Procedimiento " +
-      procedimientoRegistro +
-      " Próximo Control " +
-      proxControlRegistro +
-      " Observaciones " +
-      observacionesRegistro +
-      " Precio " +
-      precioRegistro
-  );
-
-  console.log(
-    "Largo Nombre " +
-      nombreRegistro.length +
-      ", Largo Fecha " +
-      fechaRegistro.length +
-      ", Largo  Procedimiento " +
-      procedimientoRegistro.length +
-      ", Largo  Proximo Control " +
-      proxControlRegistro.length +
-      ", Largo  Observaciones " +
-      observacionesRegistro.length +
-      ", Largo  Precio " +
-      precioRegistro.length
-  );
   return false;
 }
 
@@ -91,10 +77,9 @@ $(document).ready(function () {
           "</td><td>" +
           mascotas[i].estado +
           "</td></tr>";
-        console.log(fila);
         $("#bodyTablaAdopcion").append(fila);
       }
-      let mitabla = new DataTable("#adopcion", {
+      new DataTable("#adopcion", {
         layout: {
           topStart: {
             buttons: ["csv", "excel", "pdf"],
@@ -104,3 +89,29 @@ $(document).ready(function () {
     },
   });
 });
+
+function eliminarFila(e) {
+  $(e).parent().parent().remove();
+}
+
+function agregarRegistro(
+  fecha,
+  procedimiento,
+  proxControl,
+  observaciones,
+  precio,
+  tabla
+) {
+  let filaAAgregar = `
+  <tr>
+    <td>${fecha}</td>
+    <td>${procedimiento}</td>
+    <td>${proxControl}</td>
+    <td>${observaciones}</td>
+    <td>$${precio}</td>
+    <td><button class="btn btn-danger" onclick="eliminarFila(this)">Eliminar</button></td>
+  </tr>
+  `;
+
+  $(tabla).append(filaAAgregar);
+}
